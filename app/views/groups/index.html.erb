@@ -1,0 +1,50 @@
+<div class="container text-center">
+  <% @groups.each do |group| %>
+    <div class="pading">
+      <div class="card">
+        <% group.attributes %>
+        <div class="padding-left text-center">
+          <%= link_to group.name,user_group_path(current_user,group) %>
+        </div>
+        <div class="flexx">
+          <div class="text-left">
+            <%= link_to group.messages.last.user.email,user_group_path(current_user,group) %>
+          </div>
+          <div class="text-right">
+            <%= link_to group.messages.last.content,user_group_path(current_user,group) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% @connection = Connection.first %>
+  senha: <input type="text" id="senha">
+  <% @other_groups.each do |group| %>
+    <div class="pading">
+      <div class="card">
+        <% group.attributes %>
+        <div class="padding-left text-center">
+          <%= group.name %>
+        </div>
+        <div class="flexx">
+          <div class="text center">
+            voce nao participa desse grupo
+          </div>
+          <div class="text-right" id="enter-group">
+            <%= link_to "entrar", user_group_connection_path(current_user,group,Connection.last) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% content_for :after_js do %>
+  <script>
+    const enter = document.getElementById("enter-group");
+    enter.addEventListener("click", myFunction);
+    function myFunction() {
+      document.getElementById("senha").value = "worked";
+    };
+  </script>
+<% end %>

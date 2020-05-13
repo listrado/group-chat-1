@@ -1,0 +1,13 @@
+var msgContainer = document.getElementById("messages-container");
+
+var generatedHTML = '<% @group.messages.reverse.each do |message| %> <div class="pading"> <div class="card"> <div class="text-left"> <%= message.user.email %> </div> <div class="text-center"> <%= message.content %> </div> <div class="text-right"> <%= message.created_at.localtime.strftime('%l:%M%p') %> </div> </div> </div> <% end %>'
+
+msgContainer.innerHTML = generatedHTML;
+
+var timeOffsetDisplays = document.querySelectorAll('.time-offset-display');
+
+timeOffsetDisplays.forEach((display) => {
+  display.innerText = timeLocal(display);
+})
+
+// console.log(window.timeLocal())

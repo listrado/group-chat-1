@@ -1,0 +1,36 @@
+<div class="container text-center">
+  <% if @group == nil %>
+    <% @group = Group.find(params[:id]) %>
+  <% end %>
+  <%= @group.name %>
+  <br><br><br>
+  <div class="container-scroolbar white" id="messages-container">
+    <% @group.messages.reverse.each do |message| %>
+      <div class="pading">
+        <div class="card">
+          <div class="text-left">
+            <%= message.user.email %>
+          </div>
+          <div class="text-center">
+            <%= message.content %>
+          </div>
+          <div class="text-right">
+            <%= message.created_at.localtime.strftime('%l:%M%p') %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= simple_form_for [current_user, @group, @message] do |f| %>
+    <%= f.input :content, class: "col-sm-10" %> <%= f.submit ">>", class: "btn btn-info" %>
+  <% end %>
+
+  <%= link_to "I am hidden", refresh_messages_path(group_id: @group.id), remote: true, method: 'GET', id: "secret-btn", style: 'visibility: hidden; height: 0px; display: block' %>
+
+</div>
+
+<% content_for :after_js do %>
+  <script>
+
+  </script>
+<% end %>

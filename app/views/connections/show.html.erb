@@ -1,0 +1,31 @@
+<div class="red">
+  <div class="container text-center">
+    <br><br><br>
+    senha: <input type="text" id="senha">
+      <button id="confirm">OK</button>
+    <br><br><br><br>
+  </div>
+</div>
+<div class="green">
+  <div class="container text-center">
+    <br><br>
+    <div id="corect">
+      <button>Entrar No Grupo</button>
+    </div>
+    <br><br><br>
+  </div>
+</div>
+
+<% content_for :after_js do %>
+  <script>
+    const confirm = document.getElementById("confirm");
+    const corect = document.getElementById("corect");
+    confirm.addEventListener('click', () {
+      alert('you clicked the button');
+    });
+    confirm.addEventListener("click", myFunction);
+    function myFunction() {
+      confirm.innerHTML = "worked";
+    };
+  </script>
+<% end %>

@@ -1,0 +1,10 @@
+<div class="container text-center">
+  <div class="">
+    <% password = ((0...6).map{(65 + rand(26)).chr}.join + (0...6).map { rand(9) }.join) %>
+    <%= simple_form_for [current_user, @connection] do |f| %>
+      <%= f.input :password, label: 'senha', hint: "sua senha e #{password}", input_html: { value: password } %>
+      <%= f.input :group, label: 'nome do grupo', error: 'escolha um grupo por favor', hint: 'nao esqueca maiusculo minusculo e simbulos' %>
+      <%= f.submit "gerar acesso", class: "btn btn-info" %>
+      <% end %>
+  </div>
+</div>

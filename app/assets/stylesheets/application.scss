@@ -11,3 +11,36 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+
+.pading{
+  padding: 5px;
+}
+.padding-left{
+  padding-left: 15px;
+}
+
+.container-scroolbar {
+  max-width: 900px;
+  padding: 5px;
+  height: calc(70vh - 56px - 49px - 38px);
+  overflow: auto;
+  background-color: white;
+}
+
+.flexx{
+    height: 4vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.red{
+  background-color: red;
+}
+
+.green{
+  background-color:green;
+}

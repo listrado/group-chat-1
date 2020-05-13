@@ -1,13 +1,12 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<div class="container">
-  <h1>FINALLYYYYY</h1>
-  <% current_user %>
-  <%= a = 'gets.chomp' %>
-  <br>
-  <%= a.split("")[3] %>
-  <%= simple_form_for [a] do |f| %>
-    <%= f.input , label: 'from', input_html: %>
-  <% end %>
-
+<div class="container text-center">
+<br><br><br><br><br><br><br><br><br><br><br>
+<% if current_user %>
+<%= link_to "Entrar", user_groups_path(current_user), class: "btn btn-lg btn-light font-weight-bold wave btn-outline-primary" %>
+<% else %>
+<%= link_to "Entrar", new_user_session_path, class: "btn btn-lg btn-light font-weight-bold wave btn-outline-primary" %>
+<% end %>
+<% if current_user.admin == true %>
+<%= link_to "acesso ao grupo", new_user_connection_path(current_user), class: "btn btn-lg btn-light font-weight-bold wave btn-outline-primary" %>
+<% end %>
 </div>
+
